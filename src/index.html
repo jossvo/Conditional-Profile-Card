@@ -25,7 +25,7 @@
       </li>
       <li>
         <label>Name</label>
-        <input class="picker" for="name" type="text" />
+        <input class="picker" for="name" type="text" id="profileName" />
       </li>
       <li>
         <label>Last Name</label>
@@ -39,15 +39,15 @@
         </select>
       </li>
       <li>
-        <label>Twitter</label>
+        <label>Twitter User</label>
         <input class="picker" for="twitter" type="text" />
       </li>
       <li>
-        <label>Github</label>
+        <label>Github User</label>
         <input class="picker" for="github" type="text" />
       </li>
       <li>
-        <label>LinkedIn</label>
+        <label>LinkedIn User</label>
         <input class="picker" for="linkedin" type="text" />
       </li>
       <li>
@@ -84,9 +84,21 @@
         </select>
       </li>
     </ul>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupFile01">
+        Upload profile picture
+      </label>
+      <input type="file" class="form-control" id="inputGroupFile01" />
+    </div>
+
     <div id="widget_content"></div>
 
     <!-- do not remove this bundle.js tag -->
     <script type="text/javascript" src="/main.bundle.js"></script>
+    <script
+      src="https://kit.fontawesome.com/072e5df971.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

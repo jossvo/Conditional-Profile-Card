@@ -28,19 +28,33 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let role = variables.role;
+  if (variables.role == null) role = "";
+  let city = variables.city;
+  if (variables.city == null) role = "";
+  let country = variables.country + ", ";
+  if (variables.country == null) role = "";
+  let profilePic = document.querySelector("#inputGroupFile01");
+  let profile = "https://randomuser.me/api/portraits/women/42.jpg";
+  /* let profile = profilePic.value;
+  if (profilePic.value == "") {
+    profile = "https://randomuser.me/api/portraits/women/42.jpg";
+  }
+  alert(profile);
+  */
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <img src="${profile}" class="photo" />
+          <h1>${variables.name} ${variables.lastname}</h1>
+          <h2>${role}</h2>
+          <h3>${country}${city}</h3>
+          <ul class=${variables.socialMediaPosition}>
+            <li><a href="https://twitter.com/${variables.twitter}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${variables.github}" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/${variables.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${variables.instagram}" target="_blank"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -60,15 +74,15 @@ window.onload = function() {
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
-    twitter: null,
+    twitter: "https://twitter.com/4geeksacademy",
     github: "alesanchezr",
-    linkedin: null,
-    instagram: null,
-    name: null,
-    lastname: null,
-    role: null,
-    country: null,
-    city: null
+    linkedin: "josué-salvador-vilchis-olalde",
+    instagram: "jossvo",
+    name: "Lucy",
+    lastname: "Boilett",
+    role: "Web Developer",
+    country: "USA",
+    city: "Miami"
   };
   render(window.variables); //render the card for the first time
 
@@ -87,5 +101,8 @@ window.onload = function() {
           : this.value;
       render(Object.assign(window.variables, values)); // render again the card with new valus
     });
+  });
+  document.addEventListener("change", function() {
+    render(Object.assign(window.variables));
   });
 };
