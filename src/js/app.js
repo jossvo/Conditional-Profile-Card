@@ -31,9 +31,9 @@ function render(variables = {}) {
   let role = variables.role;
   if (variables.role == null) role = "";
   let city = variables.city;
-  if (variables.city == null) role = "";
+  if (variables.city == null) city = "";
   let country = variables.country + ", ";
-  if (variables.country == null) role = "";
+  if (variables.country == null) country = "";
   let profilePic = document.querySelector("#inputGroupFile01");
   let profile = "https://randomuser.me/api/portraits/women/42.jpg";
   /* let profile = profilePic.value;
